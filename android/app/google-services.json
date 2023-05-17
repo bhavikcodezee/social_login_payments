@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1047322999777",
+    "project_id": "social-login-7c814",
+    "storage_bucket": "social-login-7c814.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047322999777:android:f0f8587f88ae2e8492f0a0",
+        "android_client_info": {
+          "package_name": "com.example.socialLoginPayment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047322999777-b9mh28o4p7pvlog9kvop9o1iisrvp7fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnRdnea-_9h8JLwene_JgLVU9Z04xBOlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047322999777-b9mh28o4p7pvlog9kvop9o1iisrvp7fe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1047322999777-4p91lud2iega6u0gmdhs75rticdmgg87.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.socialLoginPayment"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
