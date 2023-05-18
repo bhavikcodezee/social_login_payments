@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Social & Payment implement',
+      title: 'Social & Payment  implement',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
