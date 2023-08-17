@@ -11,7 +11,7 @@ class UserInformationController extends GetxController {
       await homeController.faceBookLogout();
       Get.back();
     } else if (Get.arguments['type'] == "linkdin") {
-      homeController.linkdlnlogoutUser.value = true;
+      homeController.linkedlnlogoutUser.value = true;
       Get.back();
     } else if (Get.arguments['type'] == "github") {
       homeController.gitHublogoutUser.value = true;

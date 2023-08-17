@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dynamic_icon/flutter_dynamic_icon.dart';
 import 'package:get/get.dart';
@@ -42,10 +43,10 @@ class HomeScreen extends StatelessWidget {
               Get.to(
                 () => LinkedInUserWidget(
                   appBar: AppBar(title: const Text('Linkdin')),
-                  destroySession: _con.linkdlnlogoutUser.value,
-                  redirectUrl: _con.linkdlnRedirectUrl,
-                  clientId: _con.linkdlnClientId,
-                  clientSecret: _con.linkdlnClientSecret,
+                  destroySession: _con.linkedlnlogoutUser.value,
+                  redirectUrl: _con.linkedlnRedirectUrl,
+                  clientId: _con.linkedlnClientId,
+                  clientSecret: _con.linkedlnClientSecret,
                   projection: const [
                     ProjectionParameters.id,
                     ProjectionParameters.localizedFirstName,
@@ -106,19 +107,39 @@ class HomeScreen extends StatelessWidget {
           //SIGNIN WITH APPLE
           SignInWithAppleButton(
             onPressed: () async {
-              final credential = await SignInWithApple.getAppleIDCredential(
-                scopes: [
-                  AppleIDAuthorizationScopes.email,
-                  AppleIDAuthorizationScopes.fullName,
-                ],
-                webAuthenticationOptions: WebAuthenticationOptions(
-                  clientId: 'de.lunaone.flutter.signinwithappleexample.service',
-                  redirectUri: Uri.parse(
-                    'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple',
+              try {
+                AuthorizationCredentialAppleID credential =
+                    await SignInWithApple.getAppleIDCredential(
+                  scopes: [
+                    AppleIDAuthorizationScopes.email,
+                    AppleIDAuthorizationScopes.fullName,
+                  ],
+                  webAuthenticationOptions: WebAuthenticationOptions(
+                    clientId:
+                        'de.lunaone.flutter.signinwithappleexample.service',
+                    redirectUri: Uri.parse(
+                      'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple',
+                    ),
                   ),
-                ),
-              );
-              log(credential.toString());
+                );
+                // Store name for posterity
+                if (credential.givenName != null ||
+                    credential.familyName != null) {
+                  final String displayName =
+                      '${credential.givenName ?? ''} ${credential.familyName ?? ''}';
+                  print(displayName);
+                  // final prefs = await SharedPreferences.getInstance();
+                  // prefs.setString('apple-name', displayName);
+                }
+
+                final oauthCredential = OAuthProvider("apple.com").credential(
+                  idToken: credential.identityToken,
+                );
+
+                print(oauthCredential);
+              } on SignInWithAppleException catch (e) {
+                log(e.toString());
+              }
             },
           ),
 

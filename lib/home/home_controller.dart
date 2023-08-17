@@ -65,12 +65,12 @@ class HomeController extends GetxController {
     isLogged = false;
   }
 
-  //LINKDIN
+  //LINKEDIN
   UserObject? user;
-  RxBool linkdlnlogoutUser = false.obs;
-  String linkdlnClientId = "7887o876x2471t";
-  String linkdlnRedirectUrl = "https://social-login/linkdin-login";
-  String linkdlnClientSecret = "5TRyhO9LbogXV3n0";
+  RxBool linkedlnlogoutUser = false.obs;
+  String linkedlnClientId = "7887o876x2471t";
+  String linkedlnRedirectUrl = "https://social-login/linkdin-login";
+  String linkedlnClientSecret = "5TRyhO9LbogXV3n0";
 
   //TWITTER
   String apikey = "gLXZ6XxR26Zi7xWXLCE5oV1Vk";
